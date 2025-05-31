@@ -9,7 +9,7 @@ from PyQt6.QtWidgets import (QWidget,QHBoxLayout,
                              QScrollArea,QMessageBox,
                              QTableWidget,QTableWidgetItem,
                              QMenu)
-from PyQt6.QtGui import QFont,QAction
+from PyQt6.QtGui import QFont,QIcon
 from PyQt6.QtCore import Qt
 from pathlib import Path
 import sys

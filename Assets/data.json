@@ -1,3 +1,10 @@
 {
- "passwords": []
+ "passwords": [
+  {
+   "date": null,
+   "service": "agnap webmail",
+   "username": "agnapuser",
+   "password": "o4Uv<L73vi*U6l"
+  }
+ ]
 }
