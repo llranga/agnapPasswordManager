@@ -25,7 +25,9 @@ class MainWindow(QWidget):
         self.setWindowTitle("agnAp Password Manager")
         self.initGUI()
         self.event_handler()
-        
+        icon=QIcon(str(Path(__file__).parent/'Assets'/'appicon.png'))
+        self.setWindowIcon(icon)
+
     def initGUI(self):
         self.main_layout=QVBoxLayout()
         self.setLayout(self.main_layout)
