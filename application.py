@@ -217,7 +217,7 @@ class MainWindow(QWidget):
       record['service']=self.service_txt.text()
       record['username']=self.user_name_txt.text()
       record['password']=self.output_lbl.text()
-      record['date']=None
+      record['date']=str(date.today())
       read_and_ament_json(self.password_file,"passwords",record)
 
     def event_handler(self):
