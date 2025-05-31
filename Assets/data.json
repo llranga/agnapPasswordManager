@@ -1,10 +1,3 @@
 {
- "passwords": [
-  {
-   "date": "2025-05-31",
-   "service": "test",
-   "username": "test",
-   "password": "yoUr PaSSworD"
-  }
- ]
+ "passwords": []
 }
