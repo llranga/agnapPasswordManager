@@ -1,0 +1,6 @@
+darkdetect==0.8.0
+packaging==25.0
+pillow==10.4.0
+PyQt6==6.9.0
+PyQt6-Qt6==6.9.0
+PyQt6_sip==13.10.2
