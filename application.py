@@ -164,7 +164,7 @@ class MainWindow(QWidget):
         scroll_area.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
         tab3_layout.addWidget(scroll_area)
         #tab3_layout.addWidget(link_lbl)
-        dev_txt='Developed by (under GPL)\n©agnAp\nMakola, Sri Lanka\n\nversion 0.1\nChristchurch,NZ\n27/05/2025\n\nContributors\nMH Hamil\nPathum Eranga'
+        dev_txt='Developed by (under GNU General Public License V3)\n©agnAp\nMakola, Sri Lanka\nagnapcts@gmail.com\n\nversion 0.1\nChristchurch,NZ\n27/05/2025\n\nContributors\nMH Hamil\nPathum Eranga'
         dev_lbl=QLabel(dev_txt)
         tab3_layout.addWidget(dev_lbl)
         
