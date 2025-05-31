@@ -17,6 +17,7 @@ from password import generate_password
 import json
 from agnapjson import read_and_ament_json,remove_and_ament_json
 from datetime import date
+import threading 
 
 
 class MainWindow(QWidget):
@@ -138,6 +139,7 @@ class MainWindow(QWidget):
         self.password_table=QTableWidget(0,4)
         self.password_table.setHorizontalHeaderLabels(['Date','Service','User','Password'])
         self.load_password_table()
+        
         tab2_layout.addWidget(self.password_table)
         #buttons
         self.del_btn=QPushButton('Delete row')
@@ -183,6 +185,9 @@ class MainWindow(QWidget):
         self.output_lbl.setText(password_txt)
         #print(password_txt)
 
+    
+       
+
     def save_to_file(self):
         # check service and user name fields are filled
         if self.service_txt.text()==''or self.user_name_txt.text()=='':
@@ -193,8 +198,8 @@ class MainWindow(QWidget):
             msg.setIcon(QMessageBox.Icon.Critical)
             button=msg.exec()
         else:
-
-            self.create_dic_item()
+            t=threading.Thread(target=self.create_dic_item)
+            t.start()
             #update the password table at viewer tab
             row_position=self.password_table.rowCount()
             self.password_table.insertRow(row_position)
@@ -261,14 +266,17 @@ class MainWindow(QWidget):
         button = dlg.exec()
 
         if button == QMessageBox.StandardButton.Yes:
-            row_index=self.password_table.currentRow()  
-            if row_index != -1:
-                self.password_table.removeRow(row_index)
-                remove_and_ament_json(self.password_file,'passwords',row_index)
+            t=threading.Thread(target=self.del_row)
+            t.start()
+            self.password_table.removeRow(self.password_table.currentRow())
         else:
             pass
 
-
+    def del_row(self):
+        row_index=self.password_table.currentRow()  
+        if row_index != -1:
+            remove_and_ament_json(self.password_file,'passwords',row_index)
+            
 
 if __name__=="__main__":
     app=QApplication(sys.argv)
