@@ -5,4 +5,8 @@ This program was developed with Python 3.13.3 using PyQt6 GUI framework.
 
 ![screenshot of the main window](Assets/mainwindow.PNG)
 
+Main Window
+
 ![screenshot of the password_table](Assets/password_table.PNG)
+
+Password Viewer
