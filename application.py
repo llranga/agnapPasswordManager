@@ -46,9 +46,7 @@ class MainWindow(QWidget):
         self.setFixedSize(500,400)
         #self.password_file=Path(__file__).parent / 'Assets'/ 'data.json'
         #create empty dictionary
-        
-        
-        
+                 
         #tab view
         self.tabs=QTabWidget()
 
@@ -189,10 +187,7 @@ class MainWindow(QWidget):
         password_txt=generate_password(password_length,num_bool,sp_char_bool)
         self.output_lbl.setText(password_txt)
         #print(password_txt)
-
-    
-       
-
+      
     def save_to_file(self):
         # check service and user name fields are filled
         if self.service_txt.text()==''or self.user_name_txt.text()=='':
