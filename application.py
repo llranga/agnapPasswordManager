@@ -18,12 +18,22 @@ import json
 from agnapjson import read_and_ament_json,remove_and_ament_json
 from datetime import date
 import threading 
+import platformdirs
+import os
 
 
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("agnAp Password Manager")
+        self.password={"passwords":[                           
+                        ]}
+        app_name='agnApPasswordManager'
+        app_author='agnAp'
+        self.appdata_path = platformdirs.user_data_dir(app_name,app_author) 
+        self.password_file=(f'{self.appdata_path}/data.json')
+        initiate_folder_and_file_creation=threading.Thread(target=self.init_datajson)
+        initiate_folder_and_file_creation.start()
         self.initGUI()
         self.event_handler()
         icon=QIcon(str(Path(__file__).parent/'Assets'/'appicon.png'))
@@ -34,14 +44,9 @@ class MainWindow(QWidget):
         self.setLayout(self.main_layout)
         self.setGeometry(300,250,500,400)
         self.setFixedSize(500,400)
-        self.password_file=Path(__file__).parent / 'Assets'/ 'data.json'
-        '''self.password={"passwords":[
-                        {"date":None,"service":None, "username":None,"password":None}   
-                        ]}'''
-        self.password={"passwords":[
-                           
-                        ]}
-        self.init_datajson()
+        #self.password_file=Path(__file__).parent / 'Assets'/ 'data.json'
+        #create empty dictionary
+        
         
         
         #tab view
@@ -231,6 +236,16 @@ class MainWindow(QWidget):
         self.del_btn.clicked.connect(self.del_table_row)
 
     def init_datajson(self):
+
+        '''create appdata folder if it doesn't exists'''
+        #app_name='agnApPasswordManager'
+        #app_author='agnAp'
+        #appdata_path = platformdirs.user_data_dir(app_name,app_author) 
+        #make directory if it doesn't exists otherwise ignore
+        os.makedirs(self.appdata_path, exist_ok=True)
+        #path to the data.json file in appdata folder
+        #password_file=(f'{appdata_path}/data.json')
+
         '''create data.json file if it doesn't exists'''
         try:
          with open(file=self.password_file,mode='x') as file:
